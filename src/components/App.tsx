@@ -8,10 +8,6 @@ function App() {
   const [search, setSearch] = useState("");
   const [focused, setFocused] = useState(false);
 
-  useEffect(() => {
-    console.log(focused, "focused");
-  }, [focused]);
-
   // whenever the user searches for contacts, we update the filtered contacts
   const filteredContacts = useMemo(() => {
     return contacts.filter(
