@@ -1,6 +1,7 @@
 import React from "react";
 import { ContactType } from "../constants/contacts";
 import Contact from "./Contact";
+import "../styles/SearchResult.css";
 
 interface SearchResultProps {
   filteredContacts: ContactType[];
@@ -8,7 +9,7 @@ interface SearchResultProps {
 
 function SearchResult({ filteredContacts }: SearchResultProps) {
   return (
-    <div>
+    <div className="search-result-container">
       {filteredContacts.map((contact, index) => {
         return <Contact key={index} contact={contact} />;
       })}

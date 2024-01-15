@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CONTACTS } from "../constants/contacts";
 import "../styles/App.css";
 import SearchResult from "./SearchResult";
@@ -6,6 +6,11 @@ import SearchResult from "./SearchResult";
 function App() {
   const [contacts, setContacts] = useState(CONTACTS);
   const [search, setSearch] = useState("");
+  const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    console.log(focused, "focused");
+  }, [focused]);
 
   // whenever the user searches for contacts, we update the filtered contacts
   const filteredContacts = useMemo(() => {
@@ -25,9 +30,10 @@ function App() {
           placeholder="search to filter"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onFocus={(e) => setFocused(true)}
         />
       </div>
-      <SearchResult filteredContacts={filteredContacts} />
+      {focused && <SearchResult filteredContacts={filteredContacts} />}
     </div>
   );
 }
