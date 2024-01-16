@@ -1,7 +1,8 @@
 .contact-container {
-  width: 400px;
+  width: 100%;
   height: 50px;
   display: flex;
+  gap: 10px;
 }
 
 .contact-avatar {

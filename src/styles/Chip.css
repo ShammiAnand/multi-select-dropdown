@@ -1,11 +1,14 @@
 .chip-container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .chip {
   margin-right: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
   padding: 5px;
   cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: lightblue;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CONTACTS, ContactType } from "../constants/contacts";
 import "../styles/App.css";
 import SearchResult from "./SearchResult";
@@ -35,19 +35,15 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    console.log(selectedContacts, "selectedContacts");
-  }, [selectedContacts]);
-
   return (
     <div className="container">
       <div className="center">
-        {!!selectedContacts.length && (
+        {!!selectedContacts.length ? (
           <Chip
             selectedContacts={selectedContacts}
             handleSelectContact={handleSelectContact}
           />
-        )}
+        ) : null}
         <input
           className="input"
           type="text"

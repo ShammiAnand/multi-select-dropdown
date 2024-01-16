@@ -12,8 +12,21 @@ function Chip({ selectedContacts, handleSelectContact }: ChipProps) {
     <div className="chip-container">
       {selectedContacts.map((contact) => (
         <div className="chip">
-          <span>{contact.name}</span>
-          <span onClick={() => handleSelectContact(contact)}>X</span>
+          <span
+            style={{
+              marginRight: "10px",
+            }}
+          >
+            {contact.name}
+          </span>
+          <span
+            style={{
+              fontWeight: "800",
+            }}
+            onClick={() => handleSelectContact(contact)}
+          >
+            X
+          </span>
         </div>
       ))}
     </div>

@@ -2,13 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: blue 1px solid;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 800px;
 }
 
 .input {
-  width: 60vw;
+  width: 80%;
   height: 30px;
   border: none;
-  border-bottom: blue 1px solid;
   outline: 0;
 }
 
@@ -17,4 +20,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }

@@ -26,8 +26,8 @@ function Contact({ contact, key, handleSelectContact }: ContactProp) {
         alt="avatar"
         className="contact-avatar"
       />
-      {contact.name}
-      {contact.email}
+      <span>{contact.name}</span>
+      <span>{contact.email}</span>
     </div>
   );
 }
