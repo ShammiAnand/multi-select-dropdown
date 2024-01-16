@@ -5,13 +5,23 @@ import "../styles/SearchResult.css";
 
 interface SearchResultProps {
   filteredContacts: ContactType[];
+  handleSelectContact: (contact: ContactType) => void;
 }
 
-function SearchResult({ filteredContacts }: SearchResultProps) {
+function SearchResult({
+  filteredContacts,
+  handleSelectContact,
+}: SearchResultProps) {
   return (
     <div className="search-result-container">
       {filteredContacts.map((contact, index) => {
-        return <Contact key={index} contact={contact} />;
+        return (
+          <Contact
+            key={index}
+            contact={contact}
+            handleSelectContact={handleSelectContact}
+          />
+        );
       })}
     </div>
   );

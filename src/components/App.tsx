@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { CONTACTS } from "../constants/contacts";
+import { CONTACTS, ContactType } from "../constants/contacts";
 import "../styles/App.css";
 import SearchResult from "./SearchResult";
 
@@ -7,6 +7,7 @@ function App() {
   const [contacts, setContacts] = useState(CONTACTS);
   const [search, setSearch] = useState("");
   const [focused, setFocused] = useState(false);
+  const [selectedContacts, setSelectedContacts] = useState<ContactType[]>([]);
 
   // whenever the user searches for contacts, we update the filtered contacts
   const filteredContacts = useMemo(() => {
@@ -15,7 +16,26 @@ function App() {
         contact.name.toLowerCase().includes(search.toLowerCase()) ||
         contact.email.toLowerCase().includes(search.toLowerCase())
     );
-  }, [search]);
+  }, [search, contacts]);
+
+  useEffect(() => {
+    // remove selected contacts from contact list
+    setContacts(
+      contacts.filter((contact) => !selectedContacts.includes(contact))
+    );
+  }, [selectedContacts]);
+
+  function handleSelectContact(contact: ContactType) {
+    if (selectedContacts.includes(contact)) {
+      setSelectedContacts(selectedContacts.filter((c) => c !== contact));
+    } else {
+      setSelectedContacts([...selectedContacts, contact]);
+    }
+  }
+
+  useEffect(() => {
+    console.log(selectedContacts, "selectedContacts");
+  }, [selectedContacts]);
 
   return (
     <div className="container">
@@ -29,7 +49,12 @@ function App() {
           onFocus={(e) => setFocused(true)}
         />
       </div>
-      {focused && <SearchResult filteredContacts={filteredContacts} />}
+      {focused && (
+        <SearchResult
+          filteredContacts={filteredContacts}
+          handleSelectContact={handleSelectContact}
+        />
+      )}
     </div>
   );
 }
