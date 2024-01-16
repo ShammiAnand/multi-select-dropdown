@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { CONTACTS, ContactType } from "../constants/contacts";
 import "../styles/App.css";
 import SearchResult from "./SearchResult";
+import Chip from "./Chip";
 
 function App() {
   const [contacts, setContacts] = useState(CONTACTS);
@@ -28,6 +29,7 @@ function App() {
   function handleSelectContact(contact: ContactType) {
     if (selectedContacts.includes(contact)) {
       setSelectedContacts(selectedContacts.filter((c) => c !== contact));
+      setContacts([...contacts, contact]);
     } else {
       setSelectedContacts([...selectedContacts, contact]);
     }
@@ -40,6 +42,12 @@ function App() {
   return (
     <div className="container">
       <div className="center">
+        {!!selectedContacts.length && (
+          <Chip
+            selectedContacts={selectedContacts}
+            handleSelectContact={handleSelectContact}
+          />
+        )}
         <input
           className="input"
           type="text"

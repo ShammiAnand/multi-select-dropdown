@@ -1,0 +1,11 @@
+.chip-container {
+  display: flex;
+}
+
+.chip {
+  margin-right: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
